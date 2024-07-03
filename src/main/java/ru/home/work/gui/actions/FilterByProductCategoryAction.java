@@ -1,14 +1,11 @@
 package ru.home.work.gui.actions;
 
-import ru.home.work.gui.ContentCreator;
 import ru.home.work.gui.UserContentCreator;
-import ru.home.work.service.ShopProductsManager;
+import ru.home.work.service.singleton.ShopProductsManager;
 import ru.home.work.shop.domain.ProductCategory;
 import ru.home.work.gui.MainWindow;
 import ru.home.work.shop.domain.ShopProduct;
 
-import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;

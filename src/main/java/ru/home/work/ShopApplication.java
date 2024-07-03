@@ -1,16 +1,15 @@
 package ru.home.work;
 
 import ru.home.work.gui.MainWindow;
-import ru.home.work.service.ShopProductsManager;
+import ru.home.work.service.singleton.ShopProductsManager;
+import ru.home.work.shop.domain.Basket;
 
 public class ShopApplication {
     public static void start() {
-        System.out.println(ShopProductsManager.getInstance().getProducts());
+        ShopProductsManager.getInstance();
+        Basket.getBasket();
 
         MainWindow mainWindow = new MainWindow();
         mainWindow.setVisible(true);
-
-//        ProductsLoader productsLoader = new CsvProductsLoader(new ProductsParser());
-//        System.out.println(productsLoader.loadProducts());
     }
 }

@@ -22,10 +22,40 @@ public class UserContentCreator {
             }
             panelForProduct.add(ContentCreator.createText(shopProduct.getName()));
             panelForProduct.add(ContentCreator.createText(shopProduct.getProducer()));
-            panelForProduct.add(ContentCreator.createAddToBasketButton());
+            panelForProduct.add(ContentCreator.createAddToBasketButton(shopProduct, mainWindow));
 
             mainWindow.getFlexibleUserContentPanel().add(panelForProduct);
         });
+
+        mainWindow.getFlexibleUserContentPanel().revalidate();
+        mainWindow.getFlexibleUserContentPanel().repaint();
+        mainWindow.repaint();
+    }
+
+    public static void showBasketInformation(List<ShopProduct> basketProducts, MainWindow mainWindow) {
+        mainWindow.getFlexibleUserContentPanel().removeAll();
+        double totalPrice = 0;
+        for (int i = 0; i < basketProducts.size(); i++) {
+            ShopProduct product = basketProducts.get(i);
+            double priceForProduct = product.getPrice() * product.getCount();
+
+            JPanel panelForProduct = ContentCreator.createPanelWithGridLayout();
+            panelForProduct.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+
+            panelForProduct.add(ContentCreator.createText(product.getName()));
+            panelForProduct.add(ContentCreator.createText(product.getCount() + " шт/кг/л"));
+            panelForProduct.add(ContentCreator.createText(String.valueOf(priceForProduct)));
+            totalPrice += priceForProduct;
+
+            mainWindow.getFlexibleUserContentPanel().add(panelForProduct);
+        }
+        JPanel panelForOrder = ContentCreator.createPanelWithGridLayout();
+        panelForOrder.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
+
+        panelForOrder.add(ContentCreator.createText("Итого к оплате: " ));
+        panelForOrder.add(ContentCreator.createTextWithRedColor(String.valueOf(totalPrice)));
+        panelForOrder.add(ContentCreator.createOrderButton());
+        mainWindow.getFlexibleUserContentPanel().add(panelForOrder);
 
         mainWindow.getFlexibleUserContentPanel().revalidate();
         mainWindow.getFlexibleUserContentPanel().repaint();

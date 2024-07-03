@@ -1,5 +1,7 @@
 package ru.home.work.shop.domain;
 
+import java.util.Objects;
+
 public class ShopProduct {
     private Long id;
     private ProductCategory category;
@@ -88,5 +90,18 @@ public class ShopProduct {
                 ", category=" + category +
                 ", name='" + name + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ShopProduct that = (ShopProduct) o;
+        return Objects.equals(id, that.id) && category == that.category && Objects.equals(name, that.name) && Objects.equals(producer, that.producer);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, category, name, producer);
     }
 }

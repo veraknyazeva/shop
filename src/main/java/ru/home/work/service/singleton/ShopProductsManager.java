@@ -1,4 +1,4 @@
-package ru.home.work.service;
+package ru.home.work.service.singleton;
 
 import ru.home.work.service.loader.CsvProductsLoader;
 import ru.home.work.service.loader.ProductsLoader;

@@ -1,7 +1,10 @@
 package ru.home.work.gui;
 
+import ru.home.work.gui.actions.AddToBasketAction;
 import ru.home.work.gui.actions.FilterByKeyWordAction;
 import ru.home.work.gui.actions.FilterByPriceAction;
+import ru.home.work.gui.actions.LookUpBasketAction;
+import ru.home.work.shop.domain.ShopProduct;
 
 import javax.swing.*;
 import java.awt.*;
@@ -52,9 +55,9 @@ public class ContentCreator {
         return filterByPriceButton;
     }
 
-    public static JButton createAddToBasketButton() {
-        JButton addToBasket = new JButton("Добавить в корзину");
-//        addToBasket.addActionListener(new AddToBasketAction(mainWindow));
+    public static JButton createAddToBasketButton(ShopProduct shopProduct, MainWindow mainWindow) {
+        JButton addToBasket = new JButton(AddToBasketAction.ADD_TO_BASKET);
+        addToBasket.addActionListener(new AddToBasketAction(mainWindow, shopProduct));
         return addToBasket;
     }
 
@@ -68,5 +71,17 @@ public class ContentCreator {
         JLabel label = new JLabel(text);
         label.setForeground(Color.RED);
         return label;
+    }
+
+    public static Component createBasketButton(MainWindow mainWindow) {
+        JButton basket = new JButton(LookUpBasketAction.BASKET);
+        basket.addActionListener(new LookUpBasketAction(mainWindow));
+        return basket;
+    }
+
+    public static Component createOrderButton() {
+        JButton basket = new JButton("Оплатить");
+        //basket.addActionListener(new LookUpBasketAction(mainWindow));
+        return basket;
     }
 }

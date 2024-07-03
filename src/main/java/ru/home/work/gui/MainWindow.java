@@ -87,16 +87,23 @@ public class MainWindow extends JFrame {
         priceFilterPanel.add(priceInput);
         priceFilterPanel.add(ContentCreator.createFilterByPriceButtonWithActionListener(this));
 
+        JPanel basketPanel = ContentCreator.createPanelWithGridLayout();
+        basketPanel.add(ContentCreator.createBasketButton(this));
+
+
         controlPanel.add(searchByKeyWordPanel);
         controlPanel.add(priceFilterPanel);
+        controlPanel.add(basketPanel);
         controlPanel.add(new JPanel(new FlowLayout()));
         controlPanel.add(new JPanel(new FlowLayout()));
         controlPanel.add(new JPanel(new FlowLayout()));
         controlPanel.add(new JPanel(new FlowLayout()));
         controlPanel.add(new JPanel(new FlowLayout()));
         controlPanel.add(new JPanel(new FlowLayout()));
+
         contentPane.add(controlPanel);
         this.setContentPane(contentPane);
+
     }
 
     private void createUserContent() {
