@@ -5,7 +5,6 @@ import com.opencsv.bean.ColumnPositionMappingStrategy;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 import ru.home.work.service.loader.Product;
-import ru.home.work.shop.domain.ShopProduct;
 
 import java.io.File;
 import java.io.FileReader;

@@ -8,6 +8,8 @@ import java.util.List;
 
 public class UserContentCreator {
     private static final String PROMO = " АКЦИЯ! ";
+    private static final String COUNT = " шт/кг/л";
+    private static final String TOTAL_AMOUNT = "Итого к оплате: ";
 
     public static void showInformationByFilteredProducts(List<ShopProduct> filteredProducts, MainWindow mainWindow) {
         mainWindow.getFlexibleUserContentPanel().removeAll();
@@ -43,7 +45,7 @@ public class UserContentCreator {
             panelForProduct.setBorder(BorderFactory.createLineBorder(Color.GREEN));
 
             panelForProduct.add(ContentCreator.createText(product.getName()));
-            panelForProduct.add(ContentCreator.createText(product.getCount() + " шт/кг/л"));
+            panelForProduct.add(ContentCreator.createText(product.getCount() + COUNT));
             panelForProduct.add(ContentCreator.createText(String.valueOf(priceForProduct)));
             totalPrice += priceForProduct;
 
@@ -52,7 +54,7 @@ public class UserContentCreator {
         JPanel panelForOrder = ContentCreator.createPanelWithGridLayout();
         panelForOrder.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
 
-        panelForOrder.add(ContentCreator.createText("Итого к оплате: " ));
+        panelForOrder.add(ContentCreator.createText(TOTAL_AMOUNT));
         panelForOrder.add(ContentCreator.createTextWithRedColor(String.valueOf(totalPrice)));
         panelForOrder.add(ContentCreator.createOrderButton());
         mainWindow.getFlexibleUserContentPanel().add(panelForOrder);

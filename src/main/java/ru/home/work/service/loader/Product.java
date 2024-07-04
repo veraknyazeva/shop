@@ -1,7 +1,5 @@
 package ru.home.work.service.loader;
 
-import ru.home.work.shop.domain.ProductCategory;
-
 public class Product {
     private Long id;
     private String category;
@@ -11,9 +9,10 @@ public class Product {
     private Integer count;
     private boolean promotion;
 
-    public Product(){
+    public Product() {
 
     }
+
     public Product(Long id, String category, String name, String producer, Double price, Integer count, boolean promotion) {
         this.id = id;
         this.category = category;

@@ -11,6 +11,8 @@ import java.util.List;
 
 public class AddToBasketAction implements ActionListener {
     public static final String ADD_TO_BASKET = "Добавить в корзину";
+    private static final String PUT_IN_BASKET = "Положили в корзину: ";
+    private static final String THE_PRODUCT_IS_OUT = "Продукт закончился! :( ";
     private final MainWindow mainWindow;
     private final ShopProduct shopProduct;
 
@@ -54,9 +56,9 @@ public class AddToBasketAction implements ActionListener {
             Integer count = shopProduct.getCount();
             count--;
             shopProduct.setCount(count);
-            System.out.println("Положили в корзину: " + shopProductForBasket.getName());
+            System.out.println(PUT_IN_BASKET + shopProductForBasket.getName());
         } else {
-            JOptionPane.showMessageDialog(mainWindow, "Продукт закончился! :( ");
+            JOptionPane.showMessageDialog(mainWindow, THE_PRODUCT_IS_OUT);
         }
     }
 }

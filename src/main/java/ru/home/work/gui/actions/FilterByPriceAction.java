@@ -12,7 +12,7 @@ import java.util.List;
 public class FilterByPriceAction implements ActionListener {
 
     public static final String SEARCH = "Поиск";
-    private static final Double PRICE_LEFT_BORDER = 10.00;
+    private static final Double PRICE_LEFT_BORDER = 10.00; //магические числа
     private final MainWindow mainWindow;
 
     public FilterByPriceAction(MainWindow mainWindow) {

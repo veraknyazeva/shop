@@ -3,7 +3,7 @@ package ru.home.work.shop.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Basket {
+public class Basket { //Single-responsibility principle
     private static Basket basket = null;
     private final List<ShopProduct> products = new ArrayList<>();
 

@@ -10,6 +10,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class ContentCreator {
+    private static final String PAY = "Оплатить";
 
     public static JPanel createMainContentPane() {
         JPanel contentPane = new JPanel();
@@ -22,18 +23,17 @@ public class ContentCreator {
     public static JPanel createProductControlPanel() {
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-//        panel.setLayout(new FlowLayout());
         panel.setBorder(BorderFactory.createCompoundBorder());
         return panel;
     }
 
-    public static JPanel createPanelWithGridLayout() {
+    public static JPanel createPanelWithGridLayout() {  //DRY
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout());
         return panel;
     }
 
-    public static Component createText(String text) {
+    public static Component createText(String text) { //DRY
         TextField textField = new TextField(text);
         textField.setEditable(false);
         return textField;
@@ -80,8 +80,7 @@ public class ContentCreator {
     }
 
     public static Component createOrderButton() {
-        JButton basket = new JButton("Оплатить");
-        //basket.addActionListener(new LookUpBasketAction(mainWindow));
+        JButton basket = new JButton(PAY);
         return basket;
     }
 }

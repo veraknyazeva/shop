@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class MainWindow extends JFrame {
-    public final static int WIDTH = 1280;
+    public final static int WIDTH = 1280; //магические числа
     public final static int HEIGHT = 768;
     private final static String TITLE = "Каталог";
     private static final int INPUT_FIELD_SIZE = 10;
