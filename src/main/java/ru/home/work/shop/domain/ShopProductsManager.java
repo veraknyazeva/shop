@@ -1,13 +1,12 @@
-package ru.home.work.service.singleton;
+package ru.home.work.shop.domain;
 
 import ru.home.work.service.loader.CsvProductsLoader;
 import ru.home.work.service.loader.ProductsLoader;
 import ru.home.work.service.util.ProductsParser;
-import ru.home.work.shop.domain.ShopProduct;
 
 import java.util.List;
 
-public class ShopProductsManager {
+public class ShopProductsManager { //dependency inversion principle
     private static ShopProductsManager instance = null;
     private final List<ShopProduct> products;
 
@@ -18,7 +17,7 @@ public class ShopProductsManager {
 
     public static ShopProductsManager getInstance() {
         if (instance == null) {
-            instance = new ShopProductsManager(new CsvProductsLoader(new ProductsParser()));
+            instance = new ShopProductsManager(new CsvProductsLoader(new ProductsParser())); //
         }
         return instance;
     }

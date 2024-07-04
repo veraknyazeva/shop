@@ -1,30 +1,34 @@
 package ru.home.work.gui;
 
 import ru.home.work.shop.domain.ShopProduct;
+import ru.home.work.shop.domain.WareHouseProduct;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
-public class UserContentCreator {
+public class UserContentCreator { //Лисков
     private static final String PROMO = " АКЦИЯ! ";
     private static final String COUNT = " шт/кг/л";
     private static final String TOTAL_AMOUNT = "Итого к оплате: ";
 
-    public static void showInformationByFilteredProducts(List<ShopProduct> filteredProducts, MainWindow mainWindow) {
+    public static void showInformationByFilteredProducts(List<? extends WareHouseProduct> filteredProducts,
+                                                         MainWindow mainWindow) {
         mainWindow.getFlexibleUserContentPanel().removeAll();
 
-        filteredProducts.forEach(shopProduct -> {
+        filteredProducts.forEach(wareHouseProduct -> {
             JPanel panelForProduct = ContentCreator.createPanelWithGridLayout();
             panelForProduct.setBorder(BorderFactory.createLineBorder(Color.black));
-            if (shopProduct.isPromotion()) {
-                panelForProduct.add(ContentCreator.createTextWithRedColor(shopProduct.getPrice() + PROMO));
+
+            if (wareHouseProduct instanceof ShopProduct product
+                    && product.isPromotion()) {
+                panelForProduct.add(ContentCreator.createTextWithRedColor(wareHouseProduct.getPrice() + PROMO));
             } else {
-                panelForProduct.add(ContentCreator.createText(String.valueOf(shopProduct.getPrice())));
+                panelForProduct.add(ContentCreator.createText(String.valueOf(wareHouseProduct.getPrice())));
             }
-            panelForProduct.add(ContentCreator.createText(shopProduct.getName()));
-            panelForProduct.add(ContentCreator.createText(shopProduct.getProducer()));
-            panelForProduct.add(ContentCreator.createAddToBasketButton(shopProduct, mainWindow));
+            panelForProduct.add(ContentCreator.createText(wareHouseProduct.getName()));
+            panelForProduct.add(ContentCreator.createText(wareHouseProduct.getProducer()));
+            panelForProduct.add(ContentCreator.createAddToBasketButton(wareHouseProduct, mainWindow));
 
             mainWindow.getFlexibleUserContentPanel().add(panelForProduct);
         });
@@ -34,11 +38,12 @@ public class UserContentCreator {
         mainWindow.repaint();
     }
 
-    public static void showBasketInformation(List<ShopProduct> basketProducts, MainWindow mainWindow) {
+    public static void showBasketInformation(List<? extends WareHouseProduct> wareHouseProducts,
+                                             MainWindow mainWindow) {
         mainWindow.getFlexibleUserContentPanel().removeAll();
         double totalPrice = 0;
-        for (int i = 0; i < basketProducts.size(); i++) {
-            ShopProduct product = basketProducts.get(i);
+        for (int i = 0; i < wareHouseProducts.size(); i++) {
+            WareHouseProduct product = wareHouseProducts.get(i);
             double priceForProduct = product.getPrice() * product.getCount();
 
             JPanel panelForProduct = ContentCreator.createPanelWithGridLayout();

@@ -3,9 +3,9 @@ package ru.home.work.shop.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Basket { //Single-responsibility principle
+public class Basket {
     private static Basket basket = null;
-    private final List<ShopProduct> products = new ArrayList<>();
+    private final List<BasketProduct> products = new ArrayList<>();
 
     private Basket() {
 
@@ -18,7 +18,7 @@ public class Basket { //Single-responsibility principle
         return basket;
     }
     
-    public List<ShopProduct> getProducts() {
+    public List<BasketProduct> getProducts() {
         return products;
     }
 }

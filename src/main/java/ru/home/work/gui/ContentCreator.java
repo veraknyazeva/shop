@@ -5,6 +5,7 @@ import ru.home.work.gui.actions.FilterByKeyWordAction;
 import ru.home.work.gui.actions.FilterByPriceAction;
 import ru.home.work.gui.actions.LookUpBasketAction;
 import ru.home.work.shop.domain.ShopProduct;
+import ru.home.work.shop.domain.WareHouseProduct;
 
 import javax.swing.*;
 import java.awt.*;
@@ -55,7 +56,7 @@ public class ContentCreator {
         return filterByPriceButton;
     }
 
-    public static JButton createAddToBasketButton(ShopProduct shopProduct, MainWindow mainWindow) {
+    public static JButton createAddToBasketButton(WareHouseProduct shopProduct, MainWindow mainWindow) {
         JButton addToBasket = new JButton(AddToBasketAction.ADD_TO_BASKET);
         addToBasket.addActionListener(new AddToBasketAction(mainWindow, shopProduct));
         return addToBasket;

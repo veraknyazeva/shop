@@ -2,7 +2,7 @@ package ru.home.work.gui.actions;
 
 import ru.home.work.gui.MainWindow;
 import ru.home.work.gui.UserContentCreator;
-import ru.home.work.service.singleton.ShopProductsManager;
+import ru.home.work.shop.domain.ShopProductsManager;
 import ru.home.work.shop.domain.ShopProduct;
 
 import java.awt.event.ActionEvent;

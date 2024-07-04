@@ -2,8 +2,8 @@ package ru.home.work.gui.actions;
 
 import ru.home.work.gui.MainWindow;
 import ru.home.work.gui.UserContentCreator;
-import ru.home.work.service.singleton.ShopProductsManager;
 import ru.home.work.shop.domain.ShopProduct;
+import ru.home.work.shop.domain.ShopProductsManager;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,7 +21,6 @@ public class FilterByKeyWordAction implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        String s = e.getActionCommand();
         String keyWord = mainWindow.getKeyWordInput().getText();
         if (keyWord != null && !keyWord.isBlank()) {
             List<ShopProduct> filteredProducts = new ArrayList<>();

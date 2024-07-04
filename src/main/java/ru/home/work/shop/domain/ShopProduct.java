@@ -2,31 +2,18 @@ package ru.home.work.shop.domain;
 
 import java.util.Objects;
 
-public class ShopProduct {
-    private Long id;
+public class ShopProduct extends WareHouseProduct {
     private ProductCategory category;
-    private String name;
-    private String producer;
-    private Double price;
-    private Integer count;
     private boolean promotion;
 
     public ShopProduct() {
-
+        super();
     }
 
     public ShopProduct(Long id, ProductCategory category, String name, String producer, Double price, Integer count, boolean promotion) {
-        this.id = id;
+        super(id, name, producer, price, count);
         this.category = category;
-        this.name = name;
-        this.producer = producer;
-        this.price = price;
-        this.count = count;
         this.promotion = promotion;
-    }
-
-    public Long getId() {
-        return id;
     }
 
     public ProductCategory getCategory() {
@@ -34,49 +21,12 @@ public class ShopProduct {
     }
 
 
-    public String getName() {
-        return name;
-    }
-
-
-    public String getProducer() {
-        return producer;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public Integer getCount() {
-        return count;
-    }
-
     public boolean isPromotion() {
         return promotion;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public void setCategory(ProductCategory category) {
         this.category = category;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setProducer(String producer) {
-        this.producer = producer;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
-
-    public void setCount(Integer count) {
-        this.count = count;
     }
 
     public void setPromotion(boolean promotion) {
@@ -86,9 +36,9 @@ public class ShopProduct {
     @Override
     public String toString() {
         return "ShopProduct{" +
-                "id=" + id +
+                "id=" + getId() +
                 ", category=" + category +
-                ", name='" + name + '\'' +
+                ", name='" + getName() + '\'' +
                 '}';
     }
 
@@ -97,11 +47,11 @@ public class ShopProduct {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ShopProduct that = (ShopProduct) o;
-        return Objects.equals(id, that.id) && category == that.category && Objects.equals(name, that.name) && Objects.equals(producer, that.producer);
+        return Objects.equals(getId(), that.getId()) && category == that.category && Objects.equals(getName(), that.getName()) && Objects.equals(getProducer(), that.getProducer());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, category, name, producer);
+        return Objects.hash(getId(), category, getName(), getProducer());
     }
 }
